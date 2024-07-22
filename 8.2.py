@@ -16,7 +16,7 @@ def calculate_average(args):
     except ZeroDivisionError:
         return None
     except TypeError:
-        return f'В (args) записан некорректный тип данных'
+        return # f'В (args) записан некорректный тип данных'
     return round(average, 3)
 
 
