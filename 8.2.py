@@ -12,14 +12,17 @@ def personal_sum(args):
 
 def calculate_average(args):
     try:
-        average = personal_sum(args)[0] / (len(args) - personal_sum(args)[1])
-    except ZeroDivisionError:
-        return None
+        result, incorrect_data = personal_sum(args)
+        average = result / (len(args) - incorrect_data)
     except TypeError:
-        return # f'В (args) записан некорректный тип данных'
+        return print(f'В (args) записан некорректный тип данных')
+    except ZeroDivisionError:
+        return 0
     return round(average, 3)
 
 
+print(personal_sum([2, "Строка", 3, "Ещё Строка"]))
+print()
 print(f'Результат 1: {calculate_average("1, 2, 3")}')  # Строка перебирается, но каждый символ - строковый тип
 print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}')  # Учитываются только 1 и 3
 print(f'Результат 3: {calculate_average(567)}')  # Передана не коллекция
